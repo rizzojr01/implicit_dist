@@ -12,6 +12,10 @@ set(LIBRARY_NAME   ${PROJECT_NAME})
 set(LIBRARY_FOLDER ${PROJECT_NAME})
 include(${PROJECT_SOURCE_DIR}/cmake/SetEnv.cmake)
 
+set(METIS_LIBRARY /Users/surendharpalanisamy/local/lib/libmetis.a)
+add_library(METIS::METIS SHARED IMPORTED)
+set_property(TARGET METIS::METIS PROPERTY IMPORTED_LOCATION ${METIS_LIBRARY})
+
 # Eigen
 find_package(Eigen3 3.4 REQUIRED)
 find_package(Ceres REQUIRED)
