@@ -21,3 +21,44 @@ pip install .
 This will install the module `pyimplicitdist`. See the [demo](demo.ipynb) notebook for details on how to run the code.
 
 
+
+## How to Install pyimplicitdist in Your Python Environment
+
+[The default setup instructions in the respective github repos are not updated.Please use the following steps]
+
+Requirements: 
+
+[GKLIB](https://github.com/KarypisLab/GKlib) : https://github.com/KarypisLab/GKlib
+
+``` git clone https://github.com/KarypisLab/GKlib```
+
+``` cd METIS```
+
+``` make config```
+
+``` make ```
+
+
+
+[METIS](https://github.com/KarypisLab/METIS.git) : https://github.com/KarypisLab/METIS.git
+
+
+``` git clone https://github.com/KarypisLab/METIS.git```
+
+``` cd METIS```
+
+``` make config```
+
+``` make ```
+
+In make config using `shared=1` causes installation error and avoid using prefix while running make config (the default location is `~/local/`)
+
+[Ceres-Solver](https://github.com/ceres-solver/ceres-solver):https://github.com/ceres-solver/ceres-solver
+
+### Using Homebrew:
+
+`https://github.com/ceres-solver/ceres-solver`
+
+or follow the instructions from this page
+
+http://ceres-solver.org/installation.html#getting-the-source-code
