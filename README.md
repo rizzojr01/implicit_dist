@@ -53,6 +53,17 @@ Requirements:
 
 In make config using `shared=1` causes installation error and avoid using prefix while running make config (the default location is `~/local/`)
 
+After installing METIS, edit the `CMakeLists.txt` file to include the METIS PATH
+
+Include these lines:
+
+Replace `/Users/johndoe/` with the location in which METIS is installed
+
+set(METIS_LIBRARY /Users/johndoe/local/lib/libmetis.a)
+add_library(METIS::METIS SHARED IMPORTED)
+set_property(TARGET METIS::METIS PROPERTY IMPORTED_LOCATION ${METIS_LIBRARY})
+
+
 [Ceres-Solver](https://github.com/ceres-solver/ceres-solver):https://github.com/ceres-solver/ceres-solver
 
 ### Using Homebrew:
