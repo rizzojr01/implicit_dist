@@ -4,3 +4,5 @@ pyimplicitdist.egg-info
 *.pyc
 *.egg
 .venv
+
+dependencies/
