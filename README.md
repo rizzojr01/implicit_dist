@@ -30,13 +30,21 @@ Requirements:
 
 [GKLIB](https://github.com/KarypisLab/GKlib) : https://github.com/KarypisLab/GKlib
 
-``` git clone https://github.com/KarypisLab/GKlib```
+```bash 
+git clone https://github.com/KarypisLab/GKlib
+```
 
-``` cd METIS```
+```bash
+cd METIS
+```
 
-``` make config```
+```bash
+make config
+```
 
-``` make ```
+```bash 
+make 
+```
 
 
 
