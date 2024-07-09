@@ -16,6 +16,11 @@ set(METIS_LIBRARY /Users/surendharpalanisamy/local/lib/libmetis.a)
 add_library(METIS::METIS SHARED IMPORTED)
 set_property(TARGET METIS::METIS PROPERTY IMPORTED_LOCATION ${METIS_LIBRARY})
 
+
+find_library(SUITESPARSE_PARTITION_LIBRARY NAMES partition PATHS /opt/homebrew/Cellar/suite-sparse/7.7.0/lib)
+add_library(SuiteSparse::Partition UNKNOWN IMPORTED)
+set_property(TARGET SuiteSparse::Partition PROPERTY IMPORTED_LOCATION ${SUITESPARSE_PARTITION_LIBRARY})
+
 # Eigen
 find_package(Eigen3 3.4 REQUIRED)
 find_package(Ceres REQUIRED)
