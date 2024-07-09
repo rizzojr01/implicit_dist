@@ -35,7 +35,7 @@ git clone https://github.com/KarypisLab/GKlib
 ```
 
 ```bash
-cd METIS
+cd GKlib
 ```
 
 ```bash
@@ -51,13 +51,21 @@ make
 [METIS](https://github.com/KarypisLab/METIS.git) : https://github.com/KarypisLab/METIS.git
 
 
-``` git clone https://github.com/KarypisLab/METIS.git```
+```bash 
+git clone https://github.com/KarypisLab/METIS.git
+```
 
-``` cd METIS```
+```bash
+cd METIS
+```
 
-``` make config```
+```bash
+make config
+```
 
-``` make ```
+```bash 
+make 
+```
 
 In make config using `shared=1` causes installation error and avoid using prefix while running make config (the default location is `~/local/`)
 
