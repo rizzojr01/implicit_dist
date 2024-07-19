@@ -22,6 +22,9 @@ the version just below.
 To release a new version of pybind11:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+If you don't have nox, you should either use ``pipx run nox`` instead, or use
+``pipx install nox`` or ``brew install nox`` (Unix).
+
 - Update the version number
     - Update ``PYBIND11_VERSION_MAJOR`` etc. in
       ``include/pybind11/detail/common.h``. PATCH should be a simple integer.
@@ -30,10 +33,12 @@ To release a new version of pybind11:
     - Run ``nox -s tests_packaging`` to ensure this was done correctly.
     - Ensure that all the information in ``setup.cfg`` is up-to-date, like
       supported Python versions.
-    - Add release date in ``docs/changelog.rst``.
-          - Check to make sure
-            `needs-changelog <https://github.com/pybind/pybind11/pulls?q=is%3Apr+is%3Aclosed+label%3A%22needs+changelog%22>`_
-            issues are entered in the changelog (clear the label when done).
+    - Add release date in ``docs/changelog.rst`` and integrate the output of
+      ``nox -s make_changelog``.
+          - Note that the ``make_changelog`` command inspects
+            `needs changelog <https://github.com/pybind/pybind11/pulls?q=is%3Apr+is%3Aclosed+label%3A%22needs+changelog%22>`_.
+          - Manually clear the ``needs changelog`` labels using the GitHub web
+            interface (very easy: start by clicking the link above).
     - ``git add`` and ``git commit``, ``git push``. **Ensure CI passes**. (If it
       fails due to a known flake issue, either ignore or restart CI.)
 - Add a release branch if this is a new minor version, or update the existing release branch if it is a patch version
@@ -51,14 +56,12 @@ To release a new version of pybind11:
   notifications to users watching releases, and also uploads PyPI packages).
   (Note: if you do not use an existing tag, this creates a new lightweight tag
   for you, so you could skip the above step.)
-
     - GUI method: Under `releases <https://github.com/pybind/pybind11/releases>`_
       click "Draft a new release" on the far right, fill in the tag name
       (if you didn't tag above, it will be made here), fill in a release name
       like "Version X.Y.Z", and copy-and-paste the markdown-formatted (!) changelog
       into the description (usually ``cat docs/changelog.rst | pandoc -f rst -t gfm``).
       Check "pre-release" if this is a beta/RC.
-
     - CLI method: with ``gh`` installed, run ``gh release create vX.Y.Z -t "Version X.Y.Z"``
       If this is a pre-release, add ``-p``.
 
@@ -90,9 +93,7 @@ If you need to manually upload releases, you can download the releases from the 
 
 .. code-block:: bash
 
-    python3 -m pip install build
-    python3 -m build
-    PYBIND11_SDIST_GLOBAL=1 python3 -m build
+    nox -s build
     twine upload dist/*
 
 This makes SDists and wheels, and the final line uploads them.

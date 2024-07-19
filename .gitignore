@@ -6,3 +6,7 @@ pyimplicitdist.egg-info
 .venv
 
 dependencies/
+myenv/
+Python-3.11.4/
+pybind
+pybind/pybind11/*
