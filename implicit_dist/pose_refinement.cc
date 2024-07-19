@@ -85,7 +85,7 @@ std::vector<CameraPose> pose_refinement_multi(
         double *q = qs[k].coeffs().data();
         double *t = ts[k].data();
 
-        problem.SetParameterization(q, new ceres::EigenQuaternionParameterization());
+        // problem.SetParameterization(q, new ceres::EigenQuaternionParameterization());
     }
 
     ceres::Solver::Options options;

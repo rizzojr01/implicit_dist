@@ -163,7 +163,7 @@ double bundle_adjustment_inner(const std::vector<std::vector<Eigen::Vector2d>> &
     for (size_t k = 0; k < n_img; ++k) {
         double *q = qs[k].coeffs().data();
 
-        problem.SetParameterization(q, new ceres::EigenQuaternionParameterization());
+        // problem.SetParameterization(q, new ceres::EigenQuaternionParameterization());
 
         if (pointsInd[k].size() != points2D_center[k].size()) {
             std::cout << "size error" << std::endl;
