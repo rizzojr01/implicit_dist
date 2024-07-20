@@ -10,3 +10,4 @@ myenv/
 Python-3.11.4/
 pybind
 pybind/pybind11/*
+.DS_Store
