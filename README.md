@@ -1,23 +1,60 @@
-# Camera Pose Estimation using Implicit Distortion Models (CVPR 2022)
+# Implicit Dist Setup
 
-Code release for the paper
+This README outlines the steps to set up the environment for the [Implicit Dist](https://github.com/cvg/implicit_dist) project.
+
+## Prerequisites
+
+- Debian-based system (Debian Slim)
+- Python 3.8
+
+## Setup Steps
+
+1. Update and install system dependencies:
+   ```bash
+   apt-get update
+   apt-get install -y build-essential python3 python3-pip git cmake \
+       libgoogle-glog-dev libgflags-dev libatlas-base-dev libsuitesparse-dev \
+       pkg-config libhdf5-dev gcc libgl1-mesa-glx libglib2.0-0 libceres-dev
+   ```
+
+2. Install Eigen 3.4 from source:
+   ```bash
+   git clone https://gitlab.com/libeigen/eigen.git eigen
+   cd eigen
+   git checkout 3.4
+   mkdir build && cd build
+   cmake ..
+   make
+   make install
+   cd /
+   ```
+
+3. Clone the Implicit Dist repository:
+   ```bash
+   git clone https://github.com/cvg/implicit_dist.git implicit_dist
+   cd implicit_dist
+   ```
+
+4. Set up Python virtual environment and install Implicit Dist:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install .
+   ```
+
+## Verification
+
+After following these steps, you can verify the installation by running:
+```bash
+pip freeze
 ```
-Camera Pose Estimation using Implicit Distortion Models
-Linfei Pan, Marc Pollefeys, Viktor Larsson
-IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2022
-```
-You can find the paper [here](https://openaccess.thecvf.com/content/CVPR2022/papers/Pan_Camera_Pose_Estimation_Using_Implicit_Distortion_Models_CVPR_2022_paper.pdf), and the supplementary material [here](https://openaccess.thecvf.com/content/CVPR2022/supplemental/Pan_Camera_Pose_Estimation_CVPR_2022_supplemental.pdf).
 
-This is a cleaned-up re-implementation of the code used to run the experiments in the paper. Please let us know if you find any bugs or have any trouble running it!
+This will display all installed packages in the virtual environment.
 
+## Notes
 
-## Running the code
-The python binding can be compiled by running
+- This setup is designed for a Debian Slim environment with Python 3.8.
+- The process includes building Eigen 3.4 from source.
+- The Implicit Dist project is installed in a Python virtual environment.
 
-```
-pip install .
-```
-
-This will install the module `pyimplicitdist`. See the [demo](demo.ipynb) notebook for details on how to run the code.
-
-
+For more information about the Implicit Dist project, please refer to the [official repository](https://github.com/cvg/implicit_dist).
